@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-profile.css">
+    <title>Profile</title>
+</head>
+<body>
+    <main class="profile">
+
+        <nav class="nav-profile">
+            <h1 class="app-name">TeamIdeas</h1>
+
+            <div class="cont-redir">
+                <ul class="item"><a href="#" class="link-item" id="feed">Feed</a></ul>
+                <ul class="item"><a href="#" class="link-item" id="miPerfil">Mi Perfil</a></ul>
+                <ul class="item"><a href="#" class="link-item" id="cerrar">Cerrar Sesión</a></ul>
+            </div>
+        </nav>
+        <header class="principal-info">
+
+            <div class="cont-info">
+                <img src="#" alt="" class="profile-photo">
+                <h1 class="name" id="userName"></h1>
+                <p class="role" id="userRole"></p>
+            </div>
+
+        </header>
+        <section class="content-container">
+
+            <form class="add-idea" id="newIdea">
+                <h1 class="title-form">Crear Nueva Idea</h1>
+
+                <label id="ideaT">Titulo de la idea</label>
+                <input type="text" name="" id="ideaTitle">
+
+                <label id="ideaDesc">Descripción</label>
+                <input type="text" id="ideaDescription">
+
+                <button type="submit">Publicar idea</button>
+            </form>
+            <section class="my-ideas">
+                <h1 class="my-ideas" id="myIdeas">Mis Ideas Publicadas</h1>
+                <div class="cont-ideas" id="contIdeas">
+                    <div class="idea">
+                        <h1 class="title-idea" id="title"></h1>
+                        <div class="cont-icons">
+                            <img src="#" alt="">
+                            <img src="#" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </main>
+</body>
+</html>
