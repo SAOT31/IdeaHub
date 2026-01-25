@@ -24,7 +24,7 @@ export function saveIdea() {
     category:"Research",
     createdAt:getDate()},
     {id:3,
-    creator:'@josesitopirulin',
+    creator:'@josesito',
     name:'Fose',
     title:'Who is the richest person in the world?',
     description:"The american people",

@@ -29,6 +29,31 @@
     </header>
 
     <main id="feed" class="feed">
+        <section class="filters">
+            <h2>Filters</h2>
+            
+            <select id="category" name="category" required>
+                <option value="" selected disabled>Category</option>
+                <option value="process">Process</option>
+                <option value="research">Research</option>
+                <option value="product">Product</option>
+                <option value="improvement">Improvement</option>
+                <option value="experiment">Experiment</option>
+                <option value="other">Other</option>
+            </select>
+
+            <select id="author" name="author" required>
+                <option value="" selected disabled>Author</option>
+            </select>
+            <div class="show-all">
+                <span>Reset</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </section>
+        
         <!-- Habits rendered with innerHTML -->
 
     </main>
