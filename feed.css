@@ -148,7 +148,7 @@ header button {
   height: 0;
 }
 
-.slider.round {
+.slider-round {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -161,7 +161,7 @@ header button {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.slider-round:before {
   border-radius: 50%;
   position: absolute;
   content: "";
@@ -174,15 +174,15 @@ header button {
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked + .slider-round {
   background-color: var(--primary-color);
 }
 
-input:focus + .slider {
+input:focus + .slider-round {
   box-shadow: 0 0 1px var(--primary-color);;
 }
 
-input:checked + .slider:before {
+input:checked + .slider-round:before {
   -webkit-transform: translateX(24px);
   -ms-transform: translateX(24px);
   transform: translateX(24px);
@@ -265,6 +265,20 @@ input:checked + .slider:before {
 .idea-actions button:hover {
   color: var(--accent-color);
 }
+
+.idea-actions .edit-btn{
+  padding: 0.3rem;
+  background: var(--text-muted);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap:0.2rem;
+}
+
+.edit-btn img{
+  height: 20px;
+}
+
 
 button {
   background-color: var(--primary-color);

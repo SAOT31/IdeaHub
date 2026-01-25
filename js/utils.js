@@ -39,4 +39,5 @@ export function saveIdea() {
     createdAt:getDate()}];
 
 localStorage.setItem('ideahub_ideas',JSON.stringify(ideas));
+localStorage.setItem('loggedUser',JSON.stringify('verom'))
 }

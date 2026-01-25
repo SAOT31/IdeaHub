@@ -3,7 +3,9 @@ import { getDate, saveIdea } from "./utils.js";
 saveIdea();
 
 const ideas = localStorage.getItem('ideahub_ideas');
-const ideasList = JSON.parse(ideas)
+const ideasList = JSON.parse(ideas);
+const user = localStorage.getItem('loggedUser');
+const currentUser = JSON.parse(user)
 
 const themeToggle = document.getElementById('themeToggle');
 
@@ -47,8 +49,20 @@ function renderFeed(ideas) {
                     <button>❤️ 12</button>
                     <button>💬 3</button>
                 </div>`
+
+        ideasFeed.appendChild(output)
+
+        if (currentUser === element.creator) {
+            const buttonSpace = output.querySelector('.idea-actions');
+            const btn = document.createElement('button');
+            btn.classList.add('edit-btn');
+            btn.innerHTML=`Edit<img src="assets/edit.svg">`
+
+            buttonSpace.appendChild(btn)
             
-                ideasFeed.appendChild(output)
+        }
+
+                
     })
     authorsSet.forEach(element => {
         const authorOption = document.createElement('option');
