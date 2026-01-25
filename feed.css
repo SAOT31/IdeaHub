@@ -4,7 +4,6 @@
   --primary-color: #6b8afd;
   --secondary-color: #9aa4b2;
   --text-color: #1f2937;
-  --text-muted: #6b7280;
   --footer-bg: #f8f9fb;
   --text-primary: #1f2933;
   --text-secondary: #4b5563;
@@ -21,7 +20,6 @@
   --primary-color: #7aa2ff;
   --secondary-color: #94a3b8;
   --text-color: #e5e7eb;
-  --text-muted: #9ca3af;
   --footer-bg: #121826;
   --text-primary: #f3f4f6;
   --text-secondary: #c7cad1;
@@ -124,16 +122,17 @@ header button {
 }
 
 .filters select{
-  background: #9aa4b25a;
+  background: var(--bg-color);
   padding: 0.5rem;
   border: none;
   border-radius: 20px;
+  color: var(--text-color);
 }
 
 .filters div{
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.4rem;
 }
 
 .switch {
