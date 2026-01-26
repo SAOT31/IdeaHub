@@ -3,57 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-profile.css">
-    <title>Profile</title>
+    <title>IdeaHub: Profile</title>
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
-    <main class="profile">
 
-        <nav class="nav-profile">
-            <h1 class="app-name">TeamIdeas</h1>
+    <header class="site-header">
+        <div class="header-container">
 
-            <div class="cont-redir">
-                <ul class="item"><a href="#" class="link-item" id="feed">Feed</a></ul>
-                <ul class="item"><a href="#" class="link-item" id="miPerfil">Mi Perfil</a></ul>
-                <ul class="item"><a href="#" class="link-item" id="cerrar">Cerrar Sesión</a></ul>
-            </div>
-        </nav>
-        <header class="principal-info">
-
-            <div class="cont-info">
-                <img src="#" alt="" class="profile-photo">
-                <h1 class="name" id="userName"></h1>
-                <p class="role" id="userRole"></p>
+            <div class="logo">
+            <span>CRUDZASO · IdeaHub</span>
             </div>
 
-        </header>
-        <section class="content-container">
+            <nav class="nav">
+            <a href="ideas.html">Ideas</a>
+            <a href="profile.html">Profile</a>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+            </nav>
 
-            <form class="add-idea" id="newIdea">
-                <h1 class="title-form">Crear Nueva Idea</h1>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            🌙
+            </button>
 
-                <label id="ideaT">Titulo de la idea</label>
-                <input type="text" name="" id="ideaTitle">
+        </div>
+    </header>
 
-                <label id="ideaDesc">Descripción</label>
-                <input type="text" id="ideaDescription">
+    <main class="container">
+        <section class="card">
+            <h3>User Information</h3>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Email:</strong> john@mail.com</p>
+            <p><strong>Total Ideas:</strong> <span>4</span></p>
+        </section>
 
-                <button type="submit">Publicar idea</button>
-            </form>
-            <section class="my-ideas">
-                <h1 class="my-ideas" id="myIdeas">Mis Ideas Publicadas</h1>
-                <div class="cont-ideas" id="contIdeas">
-                    <div class="idea">
-                        <h1 class="title-idea" id="title"></h1>
-                        <div class="cont-icons">
-                            <img src="#" alt="">
-                            <img src="#" alt="">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+        <section style="margin-top:2rem;">
+            <div class="card">
+            <h4>My Ideas</h4>
+            <!-- list of ideas -->
+            </div>
         </section>
     </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <div class="footer-brand">
+            <h3>CRUDZASO · IdeaHub</h3>
+            <p>Internal collaborative platform for sharing and evolving ideas.</p>
+            </div>
+
+            <div class="footer-links">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="ideas.html">Ideas</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="index.html">Login</a></li>
+            </ul>
+            </div>
+
+            <div class="footer-meta">
+            <h4>Project</h4>
+            <p>Frontend-only demo</p>
+            <p>Built with Vanilla JS</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 CRUDZASO · IdeaHub</span>
+        </div>
+    </footer>
 </body>
-</html>
