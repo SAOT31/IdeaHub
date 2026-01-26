@@ -90,3 +90,11 @@ body {
     transform: translateY(-2px);
     color: white;
 }
+
+.text-dark {
+    color: var(--text-color) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
