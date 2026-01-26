@@ -30,7 +30,10 @@ const getUsers = () => JSON.parse(localStorage.getItem(USERS_KEY)) || [];
 if (registerForm) {
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        if(errorMsg) errorMsg.textContent = '';
+        if(errorMsg) {
+            errorMsg.textContent = '';
+            errorMsg.style.display = 'none';
+        }
         
         const fullName = document.getElementById('fullName').value;
         const email = document.getElementById('email').value;
@@ -41,7 +44,10 @@ if (registerForm) {
         const users = getUsers();
         
         if (users.find(user => user.email === email)) {
-            if(errorMsg) errorMsg.textContent = 'Error: Email already registered';
+            if(errorMsg) {
+                errorMsg.textContent = 'Error: Email already registered';
+                errorMsg.style.display = 'block';
+            }
             return;
         }
 
@@ -64,7 +70,10 @@ if (registerForm) {
 if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        if(errorMsg) errorMsg.textContent = '';
+        if(errorMsg) {
+            errorMsg.textContent = '';
+            errorMsg.style.display = 'none';
+        }
 
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
@@ -72,7 +81,10 @@ if (loginForm) {
         const user = users.find(u => u.email === email && u.password === password);
 
         if (!user) {
-            if(errorMsg) errorMsg.textContent = 'Error: Invalid credentials';
+            if(errorMsg) {
+                errorMsg.textContent = 'Error: Invalid credentials';
+                errorMsg.style.display = 'block';
+            }
             return;
         }
 
