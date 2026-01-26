@@ -23,7 +23,6 @@
                 <h1 class="h3 fw-bold text-dark">Create Account</h1>
                 <p class="text-muted small">Join the collaborative idea platform</p>
             </div>
-
             <p id="error-message" class="text-danger text-center fw-bold small"></p>
 
             <form id="registerForm">
@@ -31,10 +30,19 @@
                     <label class="form-label small text-muted fw-bold">Full Name</label>
                     <input type="text" class="form-control" id="fullName" placeholder="e.g. Carlos Pérez" required>
                 </div>
-                
                 <div class="mb-3">
                     <label class="form-label small text-muted fw-bold">Avatar URL (Optional)</label>
                     <input type="url" class="form-control" id="avatarUrl" placeholder="https://example.com/photo.jpg">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small text-muted fw-bold">Role</label>
+                    <select class="form-select" id="role" required>
+                        <option value="" selected disabled>Select your Role</option>
+                        <option value="student">Student</option>
+                        <option value="developer">Developer</option>
+                        <option value="project_manager">Project Manager</option>
+                    </select>
                 </div>
             </form>
         </section>
