@@ -24,3 +24,5 @@ if (themeToggleBtn) {
         applyTheme();
     });
 }
+
+const getUsers = () => JSON.parse(localStorage.getItem(USERS_KEY)) || [];
