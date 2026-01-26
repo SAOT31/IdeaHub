@@ -80,3 +80,10 @@ if (loginForm) {
         window.location.href = 'ideas.html';
     });
 }
+
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem(SESSION_KEY);
+        window.location.href = 'index.html';
+    });
+}
