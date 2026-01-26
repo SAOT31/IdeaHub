@@ -26,3 +26,37 @@ if (themeToggleBtn) {
 }
 
 const getUsers = () => JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+
+if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if(errorMsg) errorMsg.textContent = '';
+        
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const role = document.getElementById('role').value;
+        const avatarUrl = document.getElementById('avatarUrl').value || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(fullName);
+        
+        const users = getUsers();
+        
+        if (users.find(user => user.email === email)) {
+            if(errorMsg) errorMsg.textContent = 'Error: Email already registered';
+            return;
+        }
+
+        users.push({
+            id: Date.now(),
+            fullName,
+            email,
+            password,
+            role,
+            avatarUrl,
+            createdAt: new Date().toISOString()
+        });
+
+        localStorage.setItem(USERS_KEY, JSON.stringify(users));
+        alert('Registration successful');
+        window.location.href = 'index.html';
+    });
+}
