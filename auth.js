@@ -60,3 +60,23 @@ if (registerForm) {
         window.location.href = 'index.html';
     });
 }
+
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if(errorMsg) errorMsg.textContent = '';
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const users = getUsers();
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if (!user) {
+            if(errorMsg) errorMsg.textContent = 'Error: Invalid credentials';
+            return;
+        }
+
+        localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+        window.location.href = 'ideas.html';
+    });
+}
