@@ -87,3 +87,5 @@ if (logoutBtn) {
         window.location.href = 'index.html';
     });
 }
+
+const path = window.location.pathname;
