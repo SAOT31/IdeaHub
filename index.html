@@ -43,8 +43,24 @@
 
                     <p id="error-message" class="text-danger text-center fw-bold small" style="display: none;"></p>
 
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Email Address</label>
+                            <input type="email" class="form-control" id="email" placeholder="user@crudzaso.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="••••••" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary-custom w-100 mt-3">Sign In</button>
+                    </form>
+                    <div class="mt-4 text-center border-top pt-3">
+                        <small class="text-muted">Don't have an account?</small>
+                        <a href="register.html" class="btn btn-outline-secondary w-100 mt-2 btn-sm fw-bold">Create Account</a>
                     </div>
                 </div>
+            </div>
 
         </div>
     </main>
