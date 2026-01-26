@@ -41,6 +41,7 @@ body {
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .site-header {
@@ -98,6 +99,11 @@ body {
   padding: 0.4rem 0.6rem;
   cursor: pointer;
   font-size: 0.85rem;
+  transition: 0.2s;
+}
+
+.theme-toggle:hover {
+  border: 1px solid var(--accent-color);
 }
 
 .container {
