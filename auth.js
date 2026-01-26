@@ -89,3 +89,7 @@ if (logoutBtn) {
 }
 
 const path = window.location.pathname;
+const isPublic = path.includes('index.html') || path.includes('register.html') || path === '/';
+if (!isPublic && !localStorage.getItem(SESSION_KEY)) {
+    window.location.href = 'index.html';
+}
