@@ -66,3 +66,10 @@ body {
     border-radius: 8px;
     color: var(--text-color);
 }
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(107, 138, 253, 0.25);
+    background-color: var(--card-color);
+    color: var(--text-color);
+}
