@@ -58,3 +58,11 @@ body {
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
+
+.form-control, .form-select {
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    border-radius: 8px;
+    color: var(--text-color);
+}
