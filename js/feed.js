@@ -8,6 +8,7 @@ const user = localStorage.getItem("loggedUser");
 const currentUser = JSON.parse(user);
 const themeToggle = document.getElementById("themeToggle");
 const feed = document.getElementById("feed");
+let currentEditId = null;
 
 themeToggle.addEventListener("click", () => {
   const currentTheme = document.documentElement.getAttribute("data-theme");
@@ -19,7 +20,7 @@ themeToggle.addEventListener("click", () => {
 
 function renderFeed(ideas) {
   const ideasFeed = document.getElementById("feed");
-  ideasFeed.innerHTML = ''
+  ideasFeed.innerHTML = "";
   const authorsSet = new Set();
   const authorSelect = document.getElementById("author");
 
@@ -67,9 +68,10 @@ function renderFeed(ideas) {
   });
 }
 
-function editIdea(idea,ideaId) {
+function editIdea(idea, ideaId) {
   const modal = document.getElementById("editModal");
   modal.style.display = "block";
+  currentEditId=ideaId;
 
   const editTitle = document.getElementById("edit-title");
   const editDescription = document.getElementById("edit-description");
@@ -80,16 +82,6 @@ function editIdea(idea,ideaId) {
   editTitle.value = oldTitle;
   editDescription.value = oldDescription;
   editCategory.value = oldCategory.toLowerCase();
-
-  const form = document.getElementById("edit-form");
-  form.dataset.id = ideaId;
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const editedIdea = new FormData(form);
-    const ideaId = Number(form.dataset.id); 
-    saveEditedIdea(editedIdea, ideaId);
-    modal.style.display = "none";
-  });
 
   const span = document.getElementsByClassName("close")[0];
   span.addEventListener("click", function () {
@@ -103,28 +95,33 @@ function editIdea(idea,ideaId) {
   });
 }
 
-function saveEditedIdea(inputEdit, id) {
-  console.log(ideasList);
+const form = document.getElementById("edit-form");
+form.addEventListener("submit", (e) => {
+const modal = document.getElementById("editModal");
+  e.preventDefault();
+  const editedIdea = new FormData(form);
+  saveEditedIdea(editedIdea, currentEditId);
+  modal.style.display = "none";
+});
 
+function saveEditedIdea(inputEdit, id) {
   const idea = ideasList.find((idea) => idea.id === id);
 
   for (const [key, value] of inputEdit) {
     idea[key] = value;
-    if (key=='category') {
-        idea[key] = value.charAt(0).toUpperCase() + value.slice(1);
+    if (key == "category") {
+      idea[key] = value.charAt(0).toUpperCase() + value.slice(1);
     }
   }
 
-  localStorage.setItem('ideahub_ideas', JSON.stringify(ideasList)
-  )
-  renderFeed(ideasList)
-
+  localStorage.setItem("ideahub_ideas", JSON.stringify(ideasList));
+  renderFeed(ideasList);
 }
 
 renderFeed(ideasList);
 
 feed.addEventListener("click", (e) => {
-  if (e.target.closest(".edit-btn")) {
+  if (e.target.matches(".edit-btn")) {
     const card = e.target.closest(".idea-card");
     const ideaId = Number(card.dataset.id);
     editIdea(card, ideaId);
