@@ -38,8 +38,26 @@
 
         <section style="margin-top:2rem;">
             <div class="card">
-            <h4>My Ideas</h4>
-            <!-- list of ideas -->
+                <h4>My Ideas</h4>
+                <!-- list of ideas -->
+                <header class="idea-header">
+                    <section>
+                        <div class="avatar">${element.name[0]}</div>
+                        <div>
+                            <h3>${element.name}</h3>
+                            <span>@${element.creator}</span>
+                        </div>
+                    </section>
+                    <h4 class="idea-category">${element.category}</h4>
+                </header>
+                <h3 class="idea-title">${element.title}</h3>
+                <p class="idea-text">
+                    ${element.description}
+                </p>
+                <div class="idea-actions">
+                    <button>❤️ 12</button>
+                    <button>💬 3</button>
+                </div>`
             </div>
         </section>
     </main>
