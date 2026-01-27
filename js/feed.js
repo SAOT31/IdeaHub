@@ -2,33 +2,34 @@ import { getDate, saveIdea } from "./utils.js";
 
 saveIdea();
 
-const ideas = localStorage.getItem('ideahub_ideas');
+const ideas = localStorage.getItem("ideahub_ideas");
 const ideasList = JSON.parse(ideas);
-const user = localStorage.getItem('loggedUser');
-const currentUser = JSON.parse(user)
-const themeToggle = document.getElementById('themeToggle');
-const feed = document.getElementById('feed')
+const user = localStorage.getItem("loggedUser");
+const currentUser = JSON.parse(user);
+const themeToggle = document.getElementById("themeToggle");
+const feed = document.getElementById("feed");
 
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
+themeToggle.addEventListener("click", () => {
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", newTheme);
 
-    themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  themeToggle.textContent = newTheme === "dark" ? "☀️" : "🌙";
 });
 
 function renderFeed(ideas) {
-    const ideasFeed = document.getElementById('feed');
-    const authorsSet = new Set();
-    const authorSelect = document.getElementById('author')
+  const ideasFeed = document.getElementById("feed");
+  ideasFeed.innerHTML = ''
+  const authorsSet = new Set();
+  const authorSelect = document.getElementById("author");
 
-    ideas.forEach(element => {
-        const output = document.createElement('article');
-        output.classList.add('idea-card');
-        output.dataset.id = element.id;
-        authorsSet.add(element.creator)
+  ideas.forEach((element) => {
+    const output = document.createElement("article");
+    output.classList.add("idea-card");
+    output.dataset.id = element.id;
+    authorsSet.add(element.creator);
 
-        output.innerHTML = `
+    output.innerHTML = `
             <header class="idea-header">
                     <section>
                         <div class="avatar">${element.name[0]}</div>
@@ -37,49 +38,95 @@ function renderFeed(ideas) {
                             <span>@${element.creator}</span>
                         </div>
                     </section>
-                    <h4>${element.category}</h4>
+                    <h4 class="idea-category">${element.category}</h4>
                 </header>
-                <h3>${element.title}</h3>
+                <h3 class="idea-title">${element.title}</h3>
                 <p class="idea-text">
                     ${element.description}
                 </p>
                 <div class="idea-actions">
                     <button>❤️ 12</button>
                     <button>💬 3</button>
-                </div>`
+                </div>`;
 
-        ideasFeed.appendChild(output)
+    ideasFeed.appendChild(output);
 
-        if (currentUser === element.creator) {
-            const buttonSpace = output.querySelector('.idea-actions');
-            const btn = document.createElement('button');
-            btn.classList.add('edit-btn');
-            btn.innerHTML=`Edit<img src="assets/edit.svg">`
+    if (currentUser === element.creator) {
+      const buttonSpace = output.querySelector(".idea-actions");
+      const btn = document.createElement("button");
+      btn.classList.add("edit-btn");
+      btn.innerHTML = `Edit<img src="assets/edit.svg">`;
 
-            buttonSpace.appendChild(btn)
-        }     
-    })
-    authorsSet.forEach(element => {
-        const authorOption = document.createElement('option');
-        authorOption.innerHTML = `<option value="${element}">${element}</option>`
-        authorSelect.appendChild(authorOption)
-    });
+      buttonSpace.appendChild(btn);
+    }
+  });
+  authorsSet.forEach((element) => {
+    const authorOption = document.createElement("option");
+    authorOption.innerHTML = `<option value="${element}">${element}</option>`;
+    authorSelect.appendChild(authorOption);
+  });
 }
 
-renderFeed(ideasList)
+function editIdea(idea,ideaId) {
+  const modal = document.getElementById("editModal");
+  modal.style.display = "block";
 
-feed.addEventListener('click', (e) =>{
-    console.log('entra')
-    const modal = document.getElementById('editModal')
-    if (e.target.closest('.edit-btn')) {
-        modal.style.display = "block";
-        console.log('boton')
-        const card = e.target.closest('.idea-card');
-        const id = card.dataset.id;
-        console.log(card)
+  const editTitle = document.getElementById("edit-title");
+  const editDescription = document.getElementById("edit-description");
+  const editCategory = document.getElementById("edit-category");
+  const oldTitle = idea.querySelector(".idea-title").innerHTML;
+  const oldDescription = idea.querySelector(".idea-text").innerHTML.trim();
+  const oldCategory = idea.querySelector(".idea-category").innerHTML;
+  editTitle.value = oldTitle;
+  editDescription.value = oldDescription;
+  editCategory.value = oldCategory.toLowerCase();
+
+  const form = document.getElementById("edit-form");
+  form.dataset.id = ideaId;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const editedIdea = new FormData(form);
+    const ideaId = Number(form.dataset.id); 
+    saveEditedIdea(editedIdea, ideaId);
+    modal.style.display = "none";
+  });
+
+  const span = document.getElementsByClassName("close")[0];
+  span.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
     }
-})
+  });
+}
 
-const editBtn = document.querySelectorAll('.edit-btn')
-console.log(editBtn)
+function saveEditedIdea(inputEdit, id) {
+  console.log(ideasList);
 
+  const idea = ideasList.find((idea) => idea.id === id);
+
+  for (const [key, value] of inputEdit) {
+    idea[key] = value;
+    if (key=='category') {
+        idea[key] = value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  }
+
+  localStorage.setItem('ideahub_ideas', JSON.stringify(ideasList)
+  )
+  renderFeed(ideasList)
+
+}
+
+renderFeed(ideasList);
+
+feed.addEventListener("click", (e) => {
+  if (e.target.closest(".edit-btn")) {
+    const card = e.target.closest(".idea-card");
+    const ideaId = Number(card.dataset.id);
+    editIdea(card, ideaId);
+  }
+});

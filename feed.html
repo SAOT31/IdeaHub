@@ -1,119 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html data-theme="light" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IdeaHUB</title>
-    <link rel="stylesheet" href="feed.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="feed.css" />
+  </head>
+  <body>
     <header class="site-header">
-        <div class="header-container">
-
-            <div class="logo">
-            <span>CRUDZASO · IdeaHub</span>
-            </div>
-
-            <nav class="nav">
-            <a href="ideas.html">Ideas</a>
-            <a href="profile.html">Profile</a>
-            <button id="logoutBtn" class="logout-btn">Logout</button>
-            </nav>
-
-            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            🌙
-            </button>
-
+      <div class="header-container">
+        <div class="logo">
+          <span>CRUDZASO · IdeaHub</span>
         </div>
+
+        <nav class="nav">
+          <a href="ideas.html">Ideas</a>
+          <a href="profile.html">Profile</a>
+          <button id="logoutBtn" class="logout-btn">Logout</button>
+        </nav>
+
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          aria-label="Toggle dark mode"
+        >
+          🌙
+        </button>
+      </div>
     </header>
 
-    <main id="feed" class="feed">
-        <section class="filters">
-            <h2>Filters</h2>
-            
-            <select id="category" name="category" required>
-                <option value="" selected disabled>Category</option>
-                <option value="process">Process</option>
-                <option value="research">Research</option>
-                <option value="product">Product</option>
-                <option value="improvement">Improvement</option>
-                <option value="experiment">Experiment</option>
-                <option value="other">Other</option>
-            </select>
+    <main>
+      <section class="filters">
+        <h2>Filters</h2>
 
-            <select id="author" name="author" required>
-                <option value="" selected disabled>Author</option>
-            </select>
-            <div class="show-all">
-                <span>Reset</span>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider-round"></span>
-                </label>
-            </div>
-        </section>
-        
-        <!-- Habits rendered with innerHTML -->
+        <select id="category" name="category" required>
+          <option value="" selected disabled>Category</option>
+          <option value="process">Process</option>
+          <option value="research">Research</option>
+          <option value="product">Product</option>
+          <option value="improvement">Improvement</option>
+          <option value="experiment">Experiment</option>
+          <option value="other">Other</option>
+        </select>
 
+        <select id="author" name="author" required>
+          <option value="" selected disabled>Author</option>
+        </select>
+        <div class="show-all">
+          <span>Reset</span>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider-round"></span>
+          </label>
+        </div>
+      </section>
+      <section id="feed" class="feed">
+
+      </section>
+
+      <!-- Habits rendered with innerHTML -->
     </main>
 
     <footer class="site-footer">
-        <div class="footer-container">
-            
-            <div class="footer-brand">
-            <h3>CRUDZASO · IdeaHub</h3>
-            <p>Internal collaborative platform for sharing and evolving ideas.</p>
-            </div>
-
-            <div class="footer-links">
-            <h4>Navigation</h4>
-            <ul>
-                <li><a href="ideas.html">Ideas</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="index.html">Login</a></li>
-            </ul>
-            </div>
-
-            <div class="footer-meta">
-            <h4>Project</h4>
-            <p>Frontend-only demo</p>
-            <p>Built with Vanilla JS</p>
-            </div>
-
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>CRUDZASO · IdeaHub</h3>
+          <p>Internal collaborative platform for sharing and evolving ideas.</p>
         </div>
 
-        <div class="footer-bottom">
-            <span>© 2026 CRUDZASO · IdeaHub</span>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="ideas.html">Ideas</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="index.html">Login</a></li>
+          </ul>
         </div>
+
+        <div class="footer-meta">
+          <h4>Project</h4>
+          <p>Frontend-only demo</p>
+          <p>Built with Vanilla JS</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 CRUDZASO · IdeaHub</span>
+      </div>
     </footer>
 
     <section id="editModal" class="modal">
-        <section class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Edit Idea</h3>
-            <form>
-                <label>Title
-                    <input type="text" />
-                </label>
+      <section class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Edit Idea</h3>
+        <form id="edit-form">
+          <label
+            >Title
+            <input name="title" id="edit-title" type="text" />
+          </label>
 
-                <label>Description
-                    <textarea></textarea>
-                </label>
+          <label
+            >Description
+            <textarea name="description" id="edit-description"></textarea>
+          </label>
 
-                <label>Category
-                    <select>
-                    <option>Product</option>
-                    <option>Improvement</option>
-                    </select>
-                </label>
+          <label
+            >Category
+            <select name="category" id="edit-category">
+              <option value="process">Process</option>
+              <option value="research">Research</option>
+              <option value="product">Product</option>
+              <option value="improvement">Improvement</option>
+              <option value="experiment">Experiment</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
 
-                <button type="submit">Save</button>
-            </form>
-        </section>
+          <button id="edit-idea-btn" type="submit">Save</button>
+        </form>
+      </section>
     </section>
 
     <script type="module" src="js/feed.js"></script>
-</body>
+  </body>
 </html>
