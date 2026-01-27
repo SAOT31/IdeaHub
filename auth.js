@@ -30,6 +30,7 @@ const getUsers = () => JSON.parse(localStorage.getItem(USERS_KEY)) || [];
 if (registerForm) {
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        
         if(errorMsg) {
             errorMsg.textContent = '';
             errorMsg.style.display = 'none';
@@ -58,7 +59,9 @@ if (registerForm) {
             password,
             role,
             avatarUrl,
-            createdAt: new Date().toISOString()
+            createdAt: new Date().toISOString(),
+            ideas: 0,
+            ideasList: []
         });
 
         localStorage.setItem(USERS_KEY, JSON.stringify(users));
@@ -101,7 +104,9 @@ if (logoutBtn) {
 }
 
 const path = window.location.pathname;
-const isPublic = path.includes('index.html') || path.includes('register.html') || path === '/';
-if (!isPublic && !localStorage.getItem(SESSION_KEY)) {
+const isPublic = path.includes('index.html') || path.includes('register.html') || path === '/' || path.endsWith('/');
+const userSession = localStorage.getItem(SESSION_KEY);
+
+if (!isPublic && !userSession) {
     window.location.href = 'index.html';
 }
