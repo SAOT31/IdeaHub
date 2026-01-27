@@ -274,7 +274,8 @@ input:checked + .slider-round:before {
   color: var(--accent-color);
 }
 
-.idea-actions .edit-btn{
+.idea-actions .edit-btn,
+.idea-actions .delete-btn{
   padding: 0.3rem;
   background: var(--btn-background);
   color: var(--text-color);
@@ -283,7 +284,8 @@ input:checked + .slider-round:before {
   gap:0.2rem;
 }
 
-.edit-btn img{
+.edit-btn img,
+.delete-btn img{
   height: 20px;
 }
 

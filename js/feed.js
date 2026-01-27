@@ -54,11 +54,15 @@ function renderFeed(ideas) {
 
     if (currentUser === element.creator) {
       const buttonSpace = output.querySelector(".idea-actions");
-      const btn = document.createElement("button");
-      btn.classList.add("edit-btn");
-      btn.innerHTML = `Edit<img src="assets/edit.svg">`;
+      const btnEdit = document.createElement("button");
+      const btnDelete = document.createElement("button");
+      btnEdit.classList.add("edit-btn");
+      btnDelete.classList.add("delete-btn");
+      btnEdit.innerHTML = `Edit<img src="assets/edit.svg">`;
+      btnDelete.innerHTML = `Delete<img src="assets/trash.svg">`;
 
-      buttonSpace.appendChild(btn);
+      buttonSpace.appendChild(btnEdit);
+      buttonSpace.appendChild(btnDelete);
     }
   });
   authorsSet.forEach((element) => {
@@ -71,7 +75,7 @@ function renderFeed(ideas) {
 function editIdea(idea, ideaId) {
   const modal = document.getElementById("editModal");
   modal.style.display = "block";
-  currentEditId=ideaId;
+  currentEditId = ideaId;
 
   const editTitle = document.getElementById("edit-title");
   const editDescription = document.getElementById("edit-description");
@@ -97,7 +101,7 @@ function editIdea(idea, ideaId) {
 
 const form = document.getElementById("edit-form");
 form.addEventListener("submit", (e) => {
-const modal = document.getElementById("editModal");
+  const modal = document.getElementById("editModal");
   e.preventDefault();
   const editedIdea = new FormData(form);
   saveEditedIdea(editedIdea, currentEditId);
@@ -118,12 +122,27 @@ function saveEditedIdea(inputEdit, id) {
   renderFeed(ideasList);
 }
 
+function deleteIdea(ideaCard, ideaId) {
+  const index = ideasList.findIndex((idea) => idea.id === ideaId);
+
+  if (index !== -1) {
+    ideasList.splice(index, 1);
+  }
+
+  ideaCard.remove();
+  localStorage.setItem("ideahub_ideas", JSON.stringify(ideasList));
+}
+
 renderFeed(ideasList);
 
 feed.addEventListener("click", (e) => {
+  const card = e.target.closest(".idea-card");
+  const ideaId = Number(card.dataset.id);
   if (e.target.matches(".edit-btn")) {
-    const card = e.target.closest(".idea-card");
-    const ideaId = Number(card.dataset.id);
     editIdea(card, ideaId);
+  }
+
+  if (e.target.matches(".delete-btn")) {
+    deleteIdea(card, ideaId);
   }
 });
