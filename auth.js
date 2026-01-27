@@ -2,6 +2,18 @@ const USERS_KEY = 'crudzaso_ideahub_users';
 const SESSION_KEY = 'crudzaso_ideahub_session';
 const THEME_KEY = 'crudzaso_ideahub_theme';
 
+const path = window.location.pathname;
+const isPublic = path.includes('index.html') || path.includes('register.html') || path === '/' || path.endsWith('/');
+if (isPublic) {
+    sessionStorage.removeItem(SESSION_KEY);
+}
+const userSession = sessionStorage.getItem(SESSION_KEY);
+
+if (!isPublic && !userSession) {
+    window.location.href = 'index.html';
+
+}
+
 const registerForm = document.getElementById('registerForm');
 const loginForm = document.getElementById('loginForm');
 const errorMsg = document.getElementById('error-message');
@@ -91,22 +103,14 @@ if (loginForm) {
             return;
         }
 
-        localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify(user));
         window.location.href = 'ideas.html';
     });
 }
 
 if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
-        localStorage.removeItem(SESSION_KEY);
+        sessionStorage.removeItem(SESSION_KEY);
         window.location.href = 'index.html';
     });
-}
-
-const path = window.location.pathname;
-const isPublic = path.includes('index.html') || path.includes('register.html') || path === '/' || path.endsWith('/');
-const userSession = localStorage.getItem(SESSION_KEY);
-
-if (!isPublic && !userSession) {
-    window.location.href = 'index.html';
 }
