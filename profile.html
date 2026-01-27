@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IdeaHub: Profile</title>
     <link rel="stylesheet" href="style-profile.css">
 </head>
+
 <body>
 
     <header class="site-header">
         <div class="header-container">
 
             <div class="logo">
-            <span>CRUDZASO · IdeaHub</span>
+                <span>CRUDZASO · IdeaHub</span>
             </div>
 
             <nav class="nav">
-            <a href="ideas.html">Ideas</a>
-            <a href="profile.html">Profile</a>
-            <button id="logoutBtn" class="logout-btn">Logout</button>
+                <a href="ideas.html">Ideas</a>
+                <a href="profile.html">Profile</a>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
             </nav>
 
             <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            🌙
+                🌙
             </button>
 
         </div>
@@ -37,52 +39,33 @@
         </section>
 
         <section style="margin-top:2rem;">
-            <div class="card">
+            <div id="ideas-container" class="card">
                 <h4>My Ideas</h4>
                 <!-- list of ideas -->
-                <header class="idea-header">
-                    <section>
-                        <div class="avatar">${element.name[0]}</div>
-                        <div>
-                            <h3>${element.name}</h3>
-                            <span>@${element.creator}</span>
-                        </div>
-                    </section>
-                    <h4 class="idea-category">${element.category}</h4>
-                </header>
-                <h3 class="idea-title">${element.title}</h3>
-                <p class="idea-text">
-                    ${element.description}
-                </p>
-                <div class="idea-actions">
-                    <button>❤️ 12</button>
-                    <button>💬 3</button>
-                </div>`
-            </div>
         </section>
     </main>
     <footer class="site-footer">
         <div class="footer-container">
-            
+
             <div class="footer-brand">
-            <h3>CRUDZASO · IdeaHub</h3>
-            <p>Internal collaborative platform for sharing and evolving ideas.</p>
+                <h3>CRUDZASO · IdeaHub</h3>
+                <p>Internal collaborative platform for sharing and evolving ideas.</p>
             </div>
 
             <div class="footer-links">
-            <h4>Navigation</h4>
-            <ul>
-                <li><a href="ideas.html">Ideas</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="index.html">Login</a></li>
-            </ul>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="ideas.html">Ideas</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="index.html">Login</a></li>
+                </ul>
             </div>
 
             <div class="footer-meta">
-            <h4>Project</h4>
-            <p>Frontend-only demo</p>
-            <p>Built with Vanilla JS</p>
+                <h4>Project</h4>
+                <p>Frontend-only demo</p>
+                <p>Built with Vanilla JS</p>
             </div>
 
         </div>
@@ -91,5 +74,5 @@
             <span>© 2026 CRUDZASO · IdeaHub</span>
         </div>
     </footer>
-    <script src="profile.js"></script>
+    <script type="module" src="profile.js"></script>
 </body>

@@ -1,6 +1,7 @@
 const nameUser = document.getElementById("name")
 const emailUser = document.getElementById("email")
 const totIdeas = document.getElementById("totIdeas")
+import { saveLocal } from "./storage.js";
 
 
 //  Theme Change
@@ -19,46 +20,9 @@ toggleBtn.addEventListener("click", () => {
   }
 })
 
-// List users
-
-const users = [
-  {
-    "name": "pepito perez",
-    "username":"peperez",
-    "email":"pe_perez@gmail.com",
-    "totalIdeas": "14", // Reemplazar por la variable que me almacena la longitud de la lista ideas
-    "ideas":[
-      {
-        "id":"1234",
-        "creator":this.username,
-        "title":"QUIEN MONDA ES DORIAN?",
-        "description":"Mondá pa tu jopo maricon",
-        "category":"Urgente",
-        "createAt": "hoy"
-
-      }
-    ]
-  },
-  {
-    "name": "pepa pelaez",
-    "username":"pepita",
-    "email":"corozo@gmail.com",
-    "totalIdeas": "41", // Reemplazar por la variable que me almacena la longitud de la lista ideas
-    "ideas":[
-      {
-        "id":"4321",
-        "creator":this.username,
-        "title":"QUIEN MONDA ES DORIAN?",
-        "description":"Mondá pa tu jopo maricon",
-        "category":"Low key",
-        "createAt": "mañana"
-
-      }
-    ]
-  }
-]
 
 
+saveLocal()
 
 
 
@@ -66,16 +30,59 @@ const users = [
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  localStorage.setItem("Users", JSON.stringify(users))
+  const users = JSON.parse(localStorage.getItem("Users")) || [];
 
-  let userName = users[1].name
-  let userEmail = users[1].email
-  let userTotalIdeas = users[1].totalIdeas
+  let userLog = 0
+  const user = users[userLog];
 
-  console.log(users[0].name)
+
+  let userName = users[userLog].name
+  let userEmail = users[userLog].email
+  let userTotalIdeas = users[userLog].totalIdeas
+
+  console.log(users[userLog].name)
   nameUser.innerHTML = `<p id="name"><strong>Name:</strong> ${userName} </p>`
   emailUser.innerHTML = `<p id="email"><strong>Email:</strong> ${userEmail}</p>`
-  totIdeas.innerHTML = `<p id="totIdeas"><strong>Total Ideas:</strong><span> ${userTotalIdeas}</span></p>`
+  totIdeas.innerHTML = `<p id="totIdeas"><strong>Total Ideas:</strong><span> ${user.ideas.length}</span></p>`
+
+
+  const container = document.getElementById("ideas-container");
+  container.innerHTML = "";
+
+    for (let j = 0; j < user.ideas.length; j++) {
+      const idea = user.ideas[j];
+
+      container.innerHTML += `
+        <h4>My Ideas</h4>
+
+        <article class="idea-card">
+          <header class="idea-header">
+            <section class="idea-user">
+              <div class="avatar">${user.name[userLog]}</div>
+              <div>
+                <h3>${user.name}</h3>
+                <span>@${user.username}</span>
+              </div>
+            </section>
+
+            <h4 class="idea-category">${idea.category}</h4>
+          </header>
+
+          <h3 class="idea-title">${idea.title}</h3>
+
+          <p class="idea-text">
+            ${idea.description}
+          </p>
+
+          <div class="idea-actions">
+            <button>❤️ 12</button>
+            <button>💬 3</button>
+          </div>
+        </article>
+      `;
+    }
+  
+
 })
 
 
@@ -85,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // User Information
 /*document.addEventListener('DOMContentLoaded', () => {
-    const users = JSON.parse(localStorage.getItem("Users")) || [];
     console.log(users)
 
     let userName = users[0].name
