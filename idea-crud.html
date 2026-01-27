@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdeaHub</title>
+    <link rel="stylesheet" href="idea.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+
+            <div class="logo">
+            <span>CRUDZASO · IdeaHub</span>
+            </div>
+
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            🌙
+            </button>
+
+        </div>
+    </header>
+    <main class="container">
+        <section class="card">
+            <h3>Edit Idea</h3>
+            <form id="ideaForm">
+                <label>Title
+                    <input id="titleInput" type="text" />
+                </label>
+
+                <label>Description
+                    <textarea id="descriptionInput"></textarea>
+                </label>
+
+                <label>Category
+                    <select id="categorySelect">
+                    <option value="product">Product</option>
+                    <option value="improvement">Improvement</option>
+                    <option value="experiment">Experiment</option>
+                    <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <button type="submit">Save</button>
+                <p id="statusMsg" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <div class="footer-brand">
+            <h3>CRUDZASO · IdeaHub</h3>
+            <p>Internal collaborative platform for sharing and evolving ideas.</p>
+            </div>
+
+            <div class="footer-meta">
+            <h4>Project</h4>
+            <p>Frontend-only demo</p>
+            <p>Built with Vanilla JS</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 CRUDZASO · IdeaHub</span>
+        </div>
+    </footer>
+
+    <script type="module" src="js/ideas.js"></script>
+
+</body>
+</html>
