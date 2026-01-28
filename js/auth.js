@@ -11,7 +11,6 @@ const userSession = sessionStorage.getItem(SESSION_KEY);
 
 if (!isPublic && !userSession) {
     window.location.href = 'index.html';
-
 }
 
 const registerForm = document.getElementById('registerForm');
