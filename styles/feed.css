@@ -29,7 +29,7 @@
   --btn-background: #94a3b8;
   --border-color: #1f2937;
   --accent-color: #8da2fb;
-  --header-bg: #0f172a;
+  --header-bg: #172036;
   --toggle-bg: #1e293b;
   --modal-bg: #ffffff61;
 }
@@ -102,7 +102,7 @@ header button {
 .theme-toggle {
   background-color: var(--toggle-bg);
   border: 1px solid var(--border-color);
-  border-radius: 999px;
+  border-radius: 50%;
   padding: 0.4rem 0.6rem;
   cursor: pointer;
   font-size: 0.85rem;

@@ -22,7 +22,7 @@ const themeToggleBtn = document.getElementById('themeToggle');
 const applyTheme = () => {
     const savedTheme = localStorage.getItem(THEME_KEY) || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
-    if(themeToggleBtn) themeToggleBtn.textContent = savedTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
+    if(themeToggleBtn) themeToggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
 };
 
 applyTheme();
