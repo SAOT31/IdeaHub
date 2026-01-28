@@ -18,17 +18,14 @@ themeToggle.addEventListener("click", () => {
   themeToggle.textContent = newTheme === "dark" ? "☀️" : "🌙";
 });
 
-function renderFeed(ideas) {
+export function renderFeed(ideas) {
   const ideasFeed = document.getElementById("feed");
   ideasFeed.innerHTML = "";
-  const authorsSet = new Set();
-  const authorSelect = document.getElementById("author");
 
   ideas.forEach((element) => {
     const output = document.createElement("article");
     output.classList.add("idea-card");
     output.dataset.id = element.id;
-    authorsSet.add(element.creator);
 
     output.innerHTML = `
             <header class="idea-header">
@@ -65,10 +62,32 @@ function renderFeed(ideas) {
       buttonSpace.appendChild(btnDelete);
     }
   });
-  authorsSet.forEach((element) => {
+}
+
+export function renderAuthors(categoryFilter) {
+  const authorSelect = document.getElementById("author");
+  const selectedAuthor = authorSelect.value;
+
+  authorSelect.innerHTML = `
+    <option value="" selected disabled>Author</option>
+  `;
+  const authorsSet = new Set();
+
+  ideasList.forEach((idea) => {
+    if (idea.category.toLowerCase() == categoryFilter || !categoryFilter) {
+      authorsSet.add(idea.creator);
+    }
+  });
+
+  authorsSet.forEach((author) => {
     const authorOption = document.createElement("option");
-    authorOption.innerHTML = `<option value="${element}">${element}</option>`;
+    authorOption.value = author;
+    authorOption.textContent = author;
     authorSelect.appendChild(authorOption);
+
+    if (author === selectedAuthor) {
+      authorOption.selected = true;
+    }
   });
 }
 
@@ -134,6 +153,7 @@ function deleteIdea(ideaCard, ideaId) {
 }
 
 renderFeed(ideasList);
+renderAuthors();
 
 feed.addEventListener("click", (e) => {
   const card = e.target.closest(".idea-card");
