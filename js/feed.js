@@ -9,6 +9,15 @@ const currentUser = JSON.parse(user);
 const themeToggle = document.getElementById("themeToggle");
 const feed = document.getElementById("feed");
 let currentEditId = null;
+const logoutBtn = document.getElementById("logoutBtn");
+
+const applyTheme = () => {
+    const savedTheme = localStorage.getItem('ideahub_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    if(themeToggle) themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+};
+
+applyTheme();
 
 themeToggle.addEventListener("click", () => {
   const currentTheme = document.documentElement.getAttribute("data-theme");
@@ -55,8 +64,8 @@ export function renderFeed(ideas) {
       const btnDelete = document.createElement("button");
       btnEdit.classList.add("edit-btn");
       btnDelete.classList.add("delete-btn");
-      btnEdit.innerHTML = `Edit<img src="assets/edit.svg">`;
-      btnDelete.innerHTML = `Delete<img src="assets/trash.svg">`;
+      btnEdit.innerHTML = `Edit<img src="./../assets/edit.svg">`;
+      btnDelete.innerHTML = `Delete<img src="./../assets/trash.svg">`;
 
       buttonSpace.appendChild(btnEdit);
       buttonSpace.appendChild(btnDelete);
@@ -166,4 +175,9 @@ feed.addEventListener("click", (e) => {
   if (e.target.matches(".delete-btn")) {
     deleteIdea(card, ideaId);
   }
+});
+
+logoutBtn.addEventListener("click", () => {
+  sessionStorage.removeItem('ideahub_session');
+  window.location.href = "../index.html";
 });

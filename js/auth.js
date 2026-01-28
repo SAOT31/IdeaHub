@@ -1,6 +1,6 @@
-const USERS_KEY = 'crudzaso_ideahub_users';
-const SESSION_KEY = 'crudzaso_ideahub_session';
-const THEME_KEY = 'crudzaso_ideahub_theme';
+const USERS_KEY = 'ideahub_users';
+const SESSION_KEY = 'ideahub_session';
+const THEME_KEY = 'ideahub_theme';
 
 const path = window.location.pathname;
 const isPublic = path.includes('index.html') || path.includes('register.html') || path === '/' || path.endsWith('/');
@@ -10,7 +10,7 @@ if (isPublic) {
 const userSession = sessionStorage.getItem(SESSION_KEY);
 
 if (!isPublic && !userSession) {
-    window.location.href = 'index.html';
+    window.location.href = 'feed.html';
 }
 
 const registerForm = document.getElementById('registerForm');
@@ -77,7 +77,7 @@ if (registerForm) {
 
         localStorage.setItem(USERS_KEY, JSON.stringify(users));
         alert('Registration successful');
-        window.location.href = 'index.html';
+        window.location.href = 'feed.html';
     });
 }
 
@@ -103,7 +103,7 @@ if (loginForm) {
         }
 
         sessionStorage.setItem(SESSION_KEY, JSON.stringify(user));
-        window.location.href = 'ideas.html';
+        window.location.href = './../pages/feed.html';
     });
 }
 
