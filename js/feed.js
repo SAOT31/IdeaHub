@@ -150,6 +150,7 @@ function deleteIdea(ideaCard, ideaId) {
 
   ideaCard.remove();
   localStorage.setItem("ideahub_ideas", JSON.stringify(ideasList));
+  renderAuthors();
 }
 
 renderFeed(ideasList);
