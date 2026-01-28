@@ -34,6 +34,16 @@
   --modal-bg: #ffffff61;
 }
 
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+
 .theme-toggle {
   background-color: var(--toggle-bg);
   border: 1px solid var(--border-color);

@@ -1,25 +1,37 @@
 :root {
-    --bg-color: #f7f8fa;
-    --card-color: #ffffff;
-    --primary-color: #6b8afd;
-    --primary-hover: #5a7ddb;
-    --text-color: #1f2937;
-    --text-muted: #6b7280;
-    --border-color: #e5e7eb;
-    --header-bg: #ffffff;
-    --footer-bg: #f8f9fb;
+  --bg-color: #f7f8fa;
+  --card-color: #ffffff;
+  --primary-color: #6b8afd;
+  --secondary-color: #9aa4b2;
+  --text-color: #1f2937;
+  --footer-bg: #f8f9fb;
+  --text-primary: #1f2933;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --btn-background:#f8f9fb;
+  --border-color: #e5e7eb;
+  --accent-color: #6b8afd;
+  --header-bg: #ffffff;
+  --toggle-bg: #f1f3f7;
+  --modal-bg: #00000061;
 }
 
 [data-theme="dark"] {
-    --bg-color: #0f172a;
-    --card-color: #1e293b;
-    --primary-color: #3b82f6;
-    --primary-hover: #60a5fa;
-    --text-color: #f3f4f6;
-    --text-muted: #9ca3af;
-    --border-color: #334155;
-    --header-bg: #0f172a;
-    --footer-bg: #1e293b;
+  --bg-color: #0f172a;
+  --card-color: #1e293b;
+  --primary-color: #7aa2ff;
+  --secondary-color: #94a3b8;
+  --text-color: #e5e7eb;
+  --footer-bg: #121826;
+  --text-primary: #f3f4f6;
+  --text-secondary: #c7cad1;
+  --text-muted: #8b8f98;
+  --btn-background: #94a3b8;
+  --border-color: #1f2937;
+  --accent-color: #8da2fb;
+  --header-bg: #172036;
+  --toggle-bg: #1e293b;
+  --modal-bg: #ffffff61;
 }
 
 body {
@@ -30,6 +42,15 @@ body {
     display: flex;
     flex-direction: column;
     transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle {
+  background-color: var(--toggle-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.85rem;
 }
 
 .site-header {
@@ -60,7 +81,7 @@ body {
 }
 
 .form-control, .form-select {
-    background-color: var(--card-color);
+    background-color: var(--bg-color);
     border: 1px solid var(--border-color);
     padding: 0.75rem;
     border-radius: 8px;
@@ -72,6 +93,10 @@ body {
     box-shadow: 0 0 0 0.25rem rgba(107, 138, 253, 0.25);
     background-color: var(--card-color);
     color: var(--text-color);
+}
+
+.form-control::placeholder{
+    color: var(--text-muted);
 }
 
 .btn-primary-custom {
