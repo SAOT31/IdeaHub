@@ -1,5 +1,3 @@
-
-
 const IDEAS_KEY = 'ideahub_ideas';
 const SESSION_KEY = 'ideahub_session';
 
