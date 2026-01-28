@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdeaHub: Profile</title>
+    <link rel="stylesheet" href="style-profile.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+
+            <div class="logo">
+                <span>CRUDZASO · IdeaHub</span>
+            </div>
+
+            <nav class="nav">
+                <a href="ideas.html">Ideas</a>
+                <a href="profile.html">Profile</a>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </nav>
+
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                🌙
+            </button>
+
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h3>User Information</h3>
+            <p id="name"><strong>Name:</strong> p.user</p>
+            <p id="email"><strong>Email:</strong> john@mail.com</p>
+            <p id="totIdeas"><strong>Total Ideas:</strong> <span>4</span></p>
+        </section>
+
+        <section style="margin-top:2rem;">
+            <div id="general-container" class="card">
+                <header class="header-ideas">
+                    <h3>My Ideas</h3>
+                    <button id="addTaskBtn" class="add-task-btn">Add Task</button>
+                </header>
+                <section id="ideas-container">
+                    <h1>alguito</h1>
+                </section>
+                <!-- list of ideas -->
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h3>CRUDZASO · IdeaHub</h3>
+                <p>Internal collaborative platform for sharing and evolving ideas.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="ideas.html">Ideas</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="index.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-meta">
+                <h4>Project</h4>
+                <p>Frontend-only demo</p>
+                <p>Built with Vanilla JS</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 CRUDZASO · IdeaHub</span>
+        </div>
+    </footer>
+    <script type="module" src="profile.js"></script>
+</body>
