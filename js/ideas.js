@@ -1,5 +1,18 @@
+
+
 const IDEAS_KEY = 'ideahub_ideas';
 const SESSION_KEY = 'ideahub_session';
+
+
+function seedDemoSession() {
+    const existing = localStorage.getItem(SESSION_KEY);
+    if (existing) {
+        return JSON.parse(existing);
+    }
+    const sessionData = { loggedUser: DEFAULT_USER };
+    localStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
+    return sessionData;
+}
 
 // Genera un ID unico para cada idea
 function generateId() {
@@ -41,7 +54,9 @@ function getCurrentUser() {
         const sessionData = JSON.parse(session);
         return sessionData.loggedUser || null;
     }
-    return null;
+    // Si no hay sesion, sembramos el usuario demo para que las funciones trabajen
+    const sessionData = seedDemoSession();
+    return sessionData.loggedUser || null;
 }
 
 // Crea una nueva idea y la guarda
@@ -191,3 +206,44 @@ export function countIdeasByAuthor(authorId) {
     const userIdeas = getIdeasByAuthor(authorId);
     return userIdeas.length;
 }
+
+
+// Enlaza el formulario  para crear ideas y guardar en localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('ideaForm');
+    if (!form) return;
+
+    const titleInput = document.getElementById('titleInput');
+    const descriptionInput = document.getElementById('descriptionInput');
+    const categorySelect = document.getElementById('categorySelect');
+    const statusMsg = document.getElementById('statusMsg');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const title = titleInput?.value || '';
+        const description = descriptionInput?.value || '';
+        const category = categorySelect?.value || '';
+
+        const result = createIdea(title, description, category);
+        if (statusMsg) {
+            statusMsg.textContent = result.message;
+            statusMsg.style.color = result.success ? 'green' : 'red';
+        }
+
+        if (result.success) {
+            form.reset();
+            if (categorySelect) categorySelect.value = 'product';
+        }
+    });
+});
+
+
+localStorage.setItem(
+    SESSION_KEY,
+    JSON.stringify({
+        loggedUser: {
+            id: 'carlos',
+            email: 'carlos@gmail.com'
+        }
+    })
+);
