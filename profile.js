@@ -29,22 +29,24 @@ toggleBtn.addEventListener("click", () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const users = JSON.parse(localStorage.getItem("Users")) || [];
-
-  let userLog = 0
-  const user = users[userLog];
-
-
-  let userName = users[userLog].name
-  let userEmail = users[userLog].email
-
-  console.log(users[userLog].name)
-  nameUser.innerHTML = `<p id="name"><strong>Name:</strong> ${userName} </p>`
-  emailUser.innerHTML = `<p id="email"><strong>Email:</strong> ${userEmail}</p>`
-  totIdeas.innerHTML = `<p id="totIdeas"><strong>Total Ideas:</strong><span> ${user.ideas.length}</span></p>`
+  const user = JSON.parse(sessionStorage.getItem("ideahub_session")) || [];
+  const ideas = JSON.parse(localStorage.getItem("ideahub_ideas"))
+  
 
 
-  const container = document.getElementById("ideas-container");
+
+
+  nameUser.innerHTML = `<p id="name"><strong>Name:</strong> ${user.fullName} </p>`
+  emailUser.innerHTML = `<p id="email"><strong>Email:</strong> ${user.email}</p>`
+
+  for (let i = 0; ideas.length >= i ; i++)
+
+    //if (user.id === ideas.)
+
+    //totIdeas.innerHTML = `<p id="totIdeas"><strong>Total Ideas:</strong><span> ${ideas.length}</span></p>`
+
+
+  //const container = document.getElementById("ideas-container");
   container.innerHTML = "";
 
 
